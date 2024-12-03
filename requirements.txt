@@ -1,3 +1,4 @@
 requests
 pygobject
 pywebview
+legacy-cgi
