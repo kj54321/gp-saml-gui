@@ -309,6 +309,7 @@ class TLSAdapter(requests.adapters.HTTPAdapter):
     def init_poolmanager(self, connections, maxsize, block=False):
         ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
         ssl_context.set_ciphers('DEFAULT:@SECLEVEL=1')
+        ssl_context.check_hostname = False
         ssl_context.options |= 1<<2  # OP_LEGACY_SERVER_CONNECT
         self.poolmanager = urllib3.PoolManager(
                 num_pools=connections,
